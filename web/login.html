@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登入</title>
+</head>
+<script>
+    window.onload = function () {
+        var cookie = getCookie("user");
+        alert(cookie.length);
+        var acc = document.getElementById("a");
+        var pas = document.getElementById("p");
+        if (cookie.length == 1) {
+            acc = "";
+            pas = "";
+        } else {
+            acc.value = cookie[0].split("=")[1];
+            pas.value = cookie[1];
+        }
+    }
+
+    function getCookie(account) {
+        var strings = document.cookie.split ("_");
+        return strings;
+    }
+</script>
+<body>
+<form action="/loginServlet" method="post">
+    账号：<input type="text" name="account" id="a">
+    <br>
+    密码：&nbsp<input type="password" name="password" id="p">
+    <br>
+    <input type="radio" name="check" >记住用户名和密码
+    <input type="submit" value="登入">
+</form>
+</body>
+</html>
